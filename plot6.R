@@ -14,7 +14,8 @@ motor.vehicles.scc <- unique(SCC[
 # length(motor.vehicles.scc)
 
 cal.balt.mv <- NEI[NEI$SCC %in% motor.vehicles.scc & (NEI$fips == "24510" | NEI$fips == "06037"), ]
-
+# Cal = 06037
+# Balt = 24510
 
 plt6 <- cal.balt.mv %>% 
     group_by(fips, year) %>% 
@@ -31,6 +32,6 @@ plt6 <- cal.balt.mv %>%
 
 plt6
 
-png(filename = "plot4.png", bg="white", width = 800, height = 500)
-p
+png(filename = "plot6.png", bg="white", width = 800, height = 500)
+plt6
 dev.off()

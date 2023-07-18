@@ -12,9 +12,7 @@ balt <- subset(NEI, subset = fips == "24510") %>%
     # group_by(year) %>% 
     mutate("Total.Emissions" = sum(Emissions, na.rm = TRUE))
 
-
-png(filename = "plot3.png", bg="white", width = 800, height = 500)
-ggplot(balt) + 
+plot3 <- ggplot(balt) + 
     geom_path(aes(year, Total.Emissions, color = type), linewidth = 1) + 
     scale_x_continuous(breaks = c(1999, 2002, 2005, 2008)) +
     labs(
@@ -23,5 +21,11 @@ ggplot(balt) +
         title = "Total PM2.5 emissions in Baltimore, MD",
         color = "Type/Source"
     )
+
+plot3
+
+png(filename = "plot3.png", bg="white", 
+    width = 500, height = 300, units = "px", pointsize = 20)
+plot3
 dev.off()
 

@@ -13,7 +13,7 @@ coal.source <- SCC[grep("coal", SCC$EI.Sector, ignore.case = TRUE), 1] %>%
 
 NEI.coal <- subset(NEI, subset = NEI$SCC %in% coal.source)
 
-p <- NEI.coal %>% 
+plot4 <- NEI.coal %>% 
     group_by(year) %>% 
     summarise("Total.Emission" = sum(Emissions)) %>% 
     ggplot(mapping = aes(x=factor(year), y=Total.Emission)) +
@@ -25,8 +25,8 @@ p <- NEI.coal %>%
         fill = "Year"
     )
 
-p
+plot4
 
 png(filename = "plot4.png", bg="white", width = 800, height = 500)
-p
+plot4
 dev.off()
